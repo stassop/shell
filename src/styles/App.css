@@ -9,7 +9,13 @@
 }
 
 .App-title {
-  display: inline-block;
   font-size: 1.5rem;
   font-weight: bold;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.App button {
+  font-size: 1rem;
+  vertical-align: middle;
 }

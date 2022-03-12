@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import './TodoList.css';
+import '../styles/TodoList.css';
 
 export interface Todo {
   id: number,
@@ -51,7 +51,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ id, title, onSave, onDelete }: Todo
       }
       { !isEditing &&
         <>
-          <span className="TodoItem-title">{title}</span>&nbsp;
+          <div className="TodoItem-title">{title}</div>&nbsp;
           <button onClick={toggleEdit}>Edit</button>&nbsp;
           <button onClick={deleteTodo}>Delete</button>
         </>

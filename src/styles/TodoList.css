@@ -1,0 +1,23 @@
+.TodoList {}
+
+.TodoItem {
+  padding: 20px;
+  display: flex;
+}
+
+.TodoItem-input {
+  flex: 1 1;
+  font-size: 1rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.TodoItem-title {
+  flex: 1 1;
+  font-size: 1rem;
+  display: inline-block;
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

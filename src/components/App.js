@@ -1,22 +1,22 @@
 import React, { useReducer } from 'react';
 import TodoList from './TodoList';
-import './App.css';
+import '../styles/App.css';
 
-import { Action, rootReducer, initialState } from './reducer';
+import { Action, rootReducer, initialState } from '../reducers';
 
 const App: React.FC = () => {
   const [state, dispatch] = useReducer(rootReducer, initialState);
 
   const addTodo = () => {
-    dispatch({ type: Action.ADD });
+    dispatch({type: Action.ADD, todo: {id: state.todos.length + 1, title: 'New todo'}});
   };
 
   const onSave = (id: number, text: string) => {
-    dispatch({ type: Action.SAVE, id, text });
+    dispatch({type: Action.SAVE, id, text});
   };
 
   const onDelete = (id: number) => {
-    dispatch({ type: Action.DELETE, id });
+    dispatch({type: Action.DELETE, id});
   };
 
   return (

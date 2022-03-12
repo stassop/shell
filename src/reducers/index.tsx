@@ -1,4 +1,6 @@
-import { Todo } from './TodoList';
+import { AnyAction } from 'redux'
+
+import { Todo } from '../components/TodoList';
 
 interface State {
   todos: Todo[]
@@ -27,11 +29,11 @@ export const initialState: State = {
   ]
 };
 
-export const rootReducer = (state: State, action: any) => {
+export const rootReducer = (state: State, action: AnyAction) => {
   switch (action.type) {
     case Action.ADD:
       return {
-        todos: [{ id: state.todos.length + 1, title: 'New todo' }, ...state.todos]
+        todos: [action.todo, ...state.todos]
       }
     case Action.SAVE:
       return {
