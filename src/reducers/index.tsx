@@ -8,7 +8,7 @@ interface State {
 
 export enum Action {
   ADD = 'ADD',
-  SAVE = 'SAVE',
+  EDIT = 'EDIT',
   DELETE = 'DELETE',
 }
 
@@ -29,13 +29,13 @@ export const initialState: State = {
   ]
 };
 
-export const rootReducer = (state: State, action: AnyAction) => {
+export const rootReducer = (state: State, action: AnyAction) => { // TODO: Refine action types
   switch (action.type) {
     case Action.ADD:
       return {
         todos: [action.todo, ...state.todos]
       }
-    case Action.SAVE:
+    case Action.EDIT:
       return {
         todos: state.todos.map((todo: Todo) => todo.id === action.id ? { ...todo, title: action.text } : todo)
       }

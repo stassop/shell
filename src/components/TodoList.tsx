@@ -9,18 +9,18 @@ export interface Todo {
 
 interface TodoListProps {
   todos: Todo[],
-  onSave: (id: number, text: string) => void,
+  onEdit: (id: number, text: string) => void,
   onDelete: (id: number) => void,
 }
 
 interface TodoItemProps {
   id: number,
   title: string,
-  onSave: (id: number, text: string) => void,
+  onEdit: (id: number, text: string) => void,
   onDelete: (id: number) => void,
 }
 
-const TodoItem: React.FC<TodoItemProps> = ({ id, title, onSave, onDelete }: TodoItemProps) => {
+const TodoItem: React.FC<TodoItemProps> = ({ id, title, onEdit, onDelete }: TodoItemProps) => {
   const [ text, setText ] = useState<string>(title);
   const [ isEditing, setIsEditing ] = useState<boolean>(false);
 
@@ -28,8 +28,8 @@ const TodoItem: React.FC<TodoItemProps> = ({ id, title, onSave, onDelete }: Todo
     setIsEditing(!isEditing);
   }
 
-  const saveEdit = () => {
-    onSave(id, text);
+  const editTodo = () => {
+    onEdit(id, text);
     setIsEditing(false);
   }
 
@@ -46,7 +46,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ id, title, onSave, onDelete }: Todo
       { isEditing &&
         <>
           <input className="TodoItem-input" type="text" value={text} onChange={onChange} />&nbsp;
-          <button onClick={saveEdit}>Save</button>
+          <button onClick={editTodo}>Save</button>
         </>
       }
       { !isEditing &&
@@ -60,13 +60,13 @@ const TodoItem: React.FC<TodoItemProps> = ({ id, title, onSave, onDelete }: Todo
   );
 };
 
-const TodoList: React.FC<TodoListProps> = ({ todos, onSave, onDelete }: TodoListProps) => (
+const TodoList: React.FC<TodoListProps> = ({ todos, onEdit, onDelete }: TodoListProps) => (
   <div className="TodoList">
     { todos.map(todo => (
         <TodoItem
           key={todo.id}
           { ...todo }
-          onSave={onSave}
+          onEdit={onEdit}
           onDelete={onDelete}
         />
       ))
